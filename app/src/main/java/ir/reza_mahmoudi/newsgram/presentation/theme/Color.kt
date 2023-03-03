@@ -1,4 +1,4 @@
-package ir.reza_mahmoudi.newsgram.ui.theme
+package ir.reza_mahmoudi.newsgram.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

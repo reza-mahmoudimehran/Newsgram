@@ -1,4 +1,4 @@
-package ir.reza_mahmoudi.newsgram.ui.theme
+package ir.reza_mahmoudi.newsgram.presentation.theme
 
 import android.app.Activity
 import android.os.Build
