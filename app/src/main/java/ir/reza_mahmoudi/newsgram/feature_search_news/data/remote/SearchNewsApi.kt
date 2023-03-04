@@ -7,7 +7,7 @@ import retrofit2.http.*
 
 interface SearchNewsApi {
 
-    @GET("v2/everything")
+    @GET("everything")
     suspend fun searchNews(
         @Query("q") query: String?,
         @Query("language") language: String?,

@@ -4,6 +4,7 @@ buildscript {
         hilt_version = '2.43'
         retrofit_version = '2.9.0'
         paging_version = '1.0.0-alpha17'
+        lifecycle_version = '2.4.0'
     }
     repositories {
         mavenCentral()

@@ -1,5 +1,6 @@
 package ir.reza_mahmoudi.newsgram.core.domain.common.usecase
 
+import android.util.Log
 import com.squareup.moshi.Moshi
 import ir.reza_mahmoudi.newsgram.core.domain.common.entity.GeneralError
 import ir.reza_mahmoudi.newsgram.core.util.network.ApiResult
@@ -19,6 +20,7 @@ abstract class ApiUseCase<in P, R>(private val coroutineDispatcher: CoroutineDis
         return try {
             withContext(coroutineDispatcher) {
                 execute(parameters).let {
+                    Log.e("api",it.raw().toString())
                     if (it.isSuccessful) {
                         if (it.code() == 204 || it.code()== 205){
                             ApiResult.SuccessNoContent
@@ -39,6 +41,7 @@ abstract class ApiUseCase<in P, R>(private val coroutineDispatcher: CoroutineDis
                 }
             }
         } catch (e: Exception) {
+            Log.e("api",e.toString())
             ApiResult.Error(e)
         }
     }
