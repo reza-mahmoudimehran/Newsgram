@@ -3,6 +3,7 @@ package ir.reza_mahmoudi.newsgram.core.domain.common.usecase
 import android.util.Log
 import com.squareup.moshi.Moshi
 import ir.reza_mahmoudi.newsgram.core.domain.common.entity.GeneralError
+import ir.reza_mahmoudi.newsgram.core.util.log.showLog
 import ir.reza_mahmoudi.newsgram.core.util.network.ApiResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -20,7 +21,7 @@ abstract class ApiUseCase<in P, R>(private val coroutineDispatcher: CoroutineDis
         return try {
             withContext(coroutineDispatcher) {
                 execute(parameters).let {
-                    Log.e("api",it.raw().toString())
+                   showLog("api raw",it.raw().toString())
                     if (it.isSuccessful) {
                         if (it.code() == 204 || it.code()== 205){
                             ApiResult.SuccessNoContent
@@ -33,6 +34,7 @@ abstract class ApiUseCase<in P, R>(private val coroutineDispatcher: CoroutineDis
                             val moshi = Moshi.Builder().build()
                             val adapter = moshi.adapter(Object::class.java)
                             val errorMessage = adapter.fromJson(errorBody)
+                            showLog("api server error",errorMessage.toString())
                             ApiResult.ServerError(errorMessage as GeneralError)
                         } catch (exception : Exception) {
                             ApiResult.Error(Exception("Unknown Error"))
@@ -41,7 +43,7 @@ abstract class ApiUseCase<in P, R>(private val coroutineDispatcher: CoroutineDis
                 }
             }
         } catch (e: Exception) {
-            Log.e("api",e.toString())
+            showLog("api unknown error",e.toString())
             ApiResult.Error(e)
         }
     }
