@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTheme
 import ir.reza_mahmoudi.newsgram.feature_search_news.presentation.SearchNewsScreen
+import ir.reza_mahmoudi.newsgram.feature_top_headlines.presentation.TopHeadlineNewsScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SearchNewsScreen()
+                    TopHeadlineNewsScreen()
                 }
             }
         }

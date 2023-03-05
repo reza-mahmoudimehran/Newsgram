@@ -1,10 +1,8 @@
-package ir.reza_mahmoudi.newsgram.feature_search_news.presentation
+package ir.reza_mahmoudi.newsgram.feature_top_headlines.presentation
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -15,27 +13,24 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import ir.reza_mahmoudi.newsgram.R
 import ir.reza_mahmoudi.newsgram.core.presentation.app_components.filter.FiltersList
 import ir.reza_mahmoudi.newsgram.core.presentation.app_components.news.NewsItem
-import ir.reza_mahmoudi.newsgram.core.presentation.compose_components.search_box.SearchBox
-import ir.reza_mahmoudi.newsgram.core.presentation.design_system.shapes.*
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTypography
-import ir.reza_mahmoudi.newsgram.core.util.list.languageItems
-import ir.reza_mahmoudi.newsgram.core.util.list.sortByItems
+import ir.reza_mahmoudi.newsgram.core.util.list.countryItems
+import ir.reza_mahmoudi.newsgram.core.util.list.categoryItems
 
 @Composable
-fun SearchNewsScreen(
+fun TopHeadlineNewsScreen(
     modifier: Modifier = Modifier,
-    viewModel: SearchNewsViewModel = hiltViewModel()
+    viewModel: TopHeadlineNewsViewModel = hiltViewModel()
 ) {
-    val query: MutableState<String?> = remember { mutableStateOf(null) }
-    val language: MutableState<String?> = remember { mutableStateOf(null) }
-    val sortBy: MutableState<String?> = remember { mutableStateOf("publishedAt") }
+    val country: MutableState<String?> = remember { mutableStateOf(null) }
+    val category: MutableState<String?> = remember { mutableStateOf("general") }
 
-    val languageList = remember { languageItems }
-    val sortByList = remember { sortByItems }
+    val countryList = remember { countryItems }
+    val categoryList = remember { categoryItems }
 
-    val searchList =
-        viewModel.searchNews(query = query.value, language = language.value, sortBy = sortBy.value)
+    val topHeadlineList =
+        viewModel.getTopHeadlinesNews(country = country.value, category = category.value)
             .collectAsLazyPagingItems()
 
     LazyColumn(
@@ -44,24 +39,21 @@ fun SearchNewsScreen(
         )
     ) {
         item {
-            SearchBox(text = query)
-        }
-        item {
             FiltersList(
-                filterText= stringResource(id = R.string.language),
-                filterState = language,
-                filterList = languageList
+                filterText = stringResource(id = R.string.country),
+                filterState = country,
+                filterList = countryList
             )
         }
         item {
             FiltersList(
-                filterText= stringResource(id = R.string.sort_by),
-                filterState = sortBy,
-                filterList = sortByList
+                filterText = stringResource(id = R.string.category),
+                filterState = category,
+                filterList = categoryList
             )
         }
 
-        if (searchList.itemCount > 0) {
+        if (topHeadlineList.itemCount > 0) {
             item {
                 Text(
                     modifier = Modifier
@@ -69,13 +61,13 @@ fun SearchNewsScreen(
                         .wrapContentHeight()
                         .wrapContentWidth()
                         .padding(8.dp),
-                    text = stringResource(id = R.string.result),
+                    text = stringResource(id = R.string.top_headlines),
                     color = MaterialTheme.NewsgramColors.designSystem.Neutral30,
                     style = MaterialTheme.NewsgramTypography.text14
                 )
             }
-            items(searchList.itemCount) {
-                NewsItem(article = searchList[it])
+            items(topHeadlineList.itemCount) {
+                NewsItem(article = topHeadlineList[it])
             }
         }
     }
