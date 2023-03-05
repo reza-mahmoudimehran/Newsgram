@@ -1,4 +1,4 @@
-package ir.reza_mahmoudi.newsgram.core.presentation.theme
+package ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

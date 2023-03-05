@@ -1,20 +1,18 @@
-@file:OptIn(ExperimentalComposeUiApi::class)
-
 package ir.reza_mahmoudi.newsgram.feature_search_news.presentation
 
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.FocusState
@@ -28,8 +26,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import ir.reza_mahmoudi.newsgram.R
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.shapes.bgRounded8Neutral00StrokeNeutral10
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.shapes.bgRounded8Neutral00StrokePrimary00
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTypography
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun SearchNewsScreen(
     modifier: Modifier = Modifier,
@@ -66,13 +67,12 @@ fun SearchNewsScreen(
         viewModel.searchNews(query = query.value, language = language.value, sortBy = sortBy.value)
             .collectAsLazyPagingItems()
 
-    LazyColumn() {
+    LazyColumn(modifier = modifier) {
         item {
-
-            SearchBox(text =query)
+            SearchBox(text = query)
         }
         item {
-            LazyRow() {
+            LazyRow {
                 languageList.value.forEach {
                     item {
                         Text(
@@ -88,7 +88,7 @@ fun SearchNewsScreen(
             }
         }
         item {
-            LazyRow() {
+            LazyRow {
                 sortByList.value.forEach {
                     item {
                         Text(
@@ -110,8 +110,6 @@ fun SearchNewsScreen(
 }
 
 
-
-
 @Composable
 fun SearchBox(
     modifier: Modifier = Modifier,
@@ -127,18 +125,18 @@ fun SearchBox(
 
     val focusModifier = if (isFocused) {
         modifier
-            .padding(horizontal = 8.dp)
-//            .bgRounded5Neutral05StrokePrimary()
+            .padding(10.dp)
+            .bgRounded8Neutral00StrokePrimary00()
     } else {
         modifier
-            .padding(horizontal = 8.dp)
-//            .bgRounded12Neutral05()
+            .padding(10.dp)
+            .bgRounded8Neutral00StrokeNeutral10()
     }
     Row(
         modifier = focusModifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .height(32.dp)
+            .height(42.dp)
             .focusRequester(focusRequester)
             .onFocusChanged {
 //                isFocused=it.isFocused
@@ -154,12 +152,13 @@ fun SearchBox(
         horizontalArrangement = Arrangement.Center
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
-            contentDescription = "ic_search",
-            Modifier
+            modifier = Modifier
                 .padding(10.dp)
-                .width(12.dp)
-                .height(12.dp)
+                .width(20.dp)
+                .height(20.dp),
+            painter = painterResource(id = android.R.drawable.ic_menu_search),
+            tint = MaterialTheme.NewsgramColors.designSystem.Neutral40,
+            contentDescription = "ic_search",
         )
 
         var value by rememberSaveable { mutableStateOf("") }
@@ -169,17 +168,18 @@ fun SearchBox(
             value = value,
             onValueChange = {
                 value = it
-                text.value = it
+                if (it.length > 2)
+                    text.value = it
             },
             interactionSource = interactionSource,
-//            textStyle = MaterialTheme.venusTypography.text12.copy(color = MaterialTheme.venusColors.designSystem.Neutral45),
+            textStyle = MaterialTheme.NewsgramTypography.text12.copy(color = MaterialTheme.NewsgramColors.designSystem.Neutral40),
             decorationBox = { innerTextField ->
                 Row(modifier = Modifier.fillMaxWidth()) {
                     if (value.isEmpty()) {
                         Text(
                             text = stringResource(id = R.string.app_name),
-//                            color = MaterialTheme.venusColors.designSystem.Neutral20,
-//                            style = MaterialTheme.venusTypography.text12,
+                            color = MaterialTheme.NewsgramColors.designSystem.Neutral20,
+                            style = MaterialTheme.NewsgramTypography.text12,
                         )
                     }
                 }

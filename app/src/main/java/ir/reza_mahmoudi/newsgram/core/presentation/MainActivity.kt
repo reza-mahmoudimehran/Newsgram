@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
-import ir.reza_mahmoudi.newsgram.core.presentation.theme.NewsgramTheme
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTheme
 import ir.reza_mahmoudi.newsgram.feature_search_news.presentation.SearchNewsScreen
 
 @AndroidEntryPoint
