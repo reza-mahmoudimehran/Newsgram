@@ -28,7 +28,7 @@ data class DesignSystem(
     val Neutral50: Color = Gray50,
 
     val PrimaryText: Color = Gray50,
-    val SecondaryText: Color = Gray30,
+    val SecondaryText: Color = Lemon,
     val TertiaryText: Color = White,
     val PrimaryLink: Color = Green10,
     val DisabledText: Color = Gray20,

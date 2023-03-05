@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Newsgram</string>
+    <string name="news">News</string>
+    <string name="result">Result:</string>
     <string name="search_text">Search…</string>
     <string name="sort_by">Sort By:</string>
     <string name="language">Language:</string>
