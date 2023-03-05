@@ -1,13 +1,11 @@
 package ir.reza_mahmoudi.newsgram.feature_search_news.presentation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -26,10 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import ir.reza_mahmoudi.newsgram.R
-import ir.reza_mahmoudi.newsgram.core.presentation.design_system.shapes.bgRounded8Neutral00StrokeNeutral10
-import ir.reza_mahmoudi.newsgram.core.presentation.design_system.shapes.bgRounded8Neutral00StrokePrimary00
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.shapes.*
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTypography
+import kotlin.text.Typography
 
 @Composable
 fun SearchNewsScreen(
@@ -37,30 +35,36 @@ fun SearchNewsScreen(
     viewModel: SearchNewsViewModel = hiltViewModel()
 ) {
     val query: MutableState<String?> = remember { mutableStateOf(null) }
-    val language: MutableState<String?> = remember { mutableStateOf("en") }
+    val language: MutableState<String?> = remember { mutableStateOf(null) }
     val sortBy: MutableState<String?> = remember { mutableStateOf("publishedAt") }
 
     val languageList = remember {
         mutableStateOf(
-            listOf(
-                "ar",
-                "de",
-                "en",
-                "es",
-                "fr",
-                "he",
-                "it",
-                "nl",
-                "no",
-                "pt",
-                "ru",
-                "sv",
-                "ud",
-                "zh"
+            mapOf(
+                null to "All",
+                "en" to "English",
+                "de" to "German",
+                "es" to "Spanish",
+                "fr" to "French",
+                "it" to "Italian",
+                "no" to "Norwegian",
+                "pt" to "Portuguese",
+                "ru" to "Russian",
+                "sv" to "Swedish",
+                "ar" to "Arabic",
+                "zh" to "Chinese"
             )
         )
     }
-    val sortByList = remember { mutableStateOf(listOf("publishedAt", "relevancy", "popularity")) }
+    val sortByList = remember {
+        mutableStateOf(
+            mapOf(
+                "publishedAt" to "Published At",
+                "relevancy" to "Relevancy",
+                "popularity" to "Popularity"
+            )
+        )
+    }
 //    val search = remember {  mutableStateOf("text") }
 
     val searchList =
@@ -72,32 +76,83 @@ fun SearchNewsScreen(
             SearchBox(text = query)
         }
         item {
-            LazyRow {
+            LazyRow(
+                modifier = Modifier
+                    .padding(5.dp)
+            ) {
+                item {
+                    Text(
+                        modifier = Modifier
+                            .padding(5.dp)
+                            .wrapContentHeight()
+                            .wrapContentWidth()
+                            .padding(8.dp),
+                        text = stringResource(id = R.string.language),
+                        color = MaterialTheme.NewsgramColors.designSystem.Neutral50,
+                        style = MaterialTheme.NewsgramTypography.text14
+                    )
+                }
+
                 languageList.value.forEach {
                     item {
                         Text(
                             modifier = Modifier
                                 .padding(5.dp)
                                 .clickable {
-                                    language.value = it
-                                },
-                            text = it
+                                    language.value = it.key
+                                }
+                                .bgRounded8Primary00NonStroke()
+                                .wrapContentHeight()
+                                .wrapContentWidth()
+                                .padding(8.dp),
+                            text = it.value,
+                            color = if (it.key == language.value) {
+                                MaterialTheme.NewsgramColors.designSystem.Neutral20
+                            } else {
+                                MaterialTheme.NewsgramColors.designSystem.Neutral50
+                            },
+                            style = MaterialTheme.NewsgramTypography.text14
                         )
                     }
                 }
             }
         }
         item {
-            LazyRow {
+            LazyRow(
+                modifier = Modifier
+                    .padding(5.dp)
+            ) {
+                item {
+                    Text(
+                        modifier = Modifier
+                            .padding(5.dp)
+                            .wrapContentHeight()
+                            .wrapContentWidth()
+                            .padding(8.dp),
+                        text = stringResource(id = R.string.sort_by),
+                        color = MaterialTheme.NewsgramColors.designSystem.Neutral50,
+                        style = MaterialTheme.NewsgramTypography.text14
+                    )
+                }
                 sortByList.value.forEach {
                     item {
                         Text(
                             modifier = Modifier
                                 .padding(5.dp)
                                 .clickable {
-                                    sortBy.value = it
-                                },
-                            text = it
+                                    sortBy.value = it.key
+                                }
+                                .bgRounded8Primary00NonStroke()
+                                .wrapContentHeight()
+                                .wrapContentWidth()
+                                .padding(8.dp),
+                            text = it.value,
+                            color = if (it.key == sortBy.value) {
+                                MaterialTheme.NewsgramColors.designSystem.Neutral20
+                            } else {
+                                MaterialTheme.NewsgramColors.designSystem.Neutral50
+                            },
+                            style = MaterialTheme.NewsgramTypography.text14
                         )
                     }
                 }
@@ -126,7 +181,7 @@ fun SearchBox(
     val focusModifier = if (isFocused) {
         modifier
             .padding(10.dp)
-            .bgRounded8Neutral00StrokePrimary00()
+            .bgRounded8Neutral00StrokePrimary20()
     } else {
         modifier
             .padding(10.dp)
@@ -172,12 +227,12 @@ fun SearchBox(
                     text.value = it
             },
             interactionSource = interactionSource,
-            textStyle = MaterialTheme.NewsgramTypography.text12.copy(color = MaterialTheme.NewsgramColors.designSystem.Neutral40),
+            textStyle = MaterialTheme.NewsgramTypography.text14.copy(color = MaterialTheme.NewsgramColors.designSystem.Neutral40),
             decorationBox = { innerTextField ->
                 Row(modifier = Modifier.fillMaxWidth()) {
                     if (value.isEmpty()) {
                         Text(
-                            text = stringResource(id = R.string.app_name),
+                            text = stringResource(id = R.string.search_text),
                             color = MaterialTheme.NewsgramColors.designSystem.Neutral20,
                             style = MaterialTheme.NewsgramTypography.text12,
                         )

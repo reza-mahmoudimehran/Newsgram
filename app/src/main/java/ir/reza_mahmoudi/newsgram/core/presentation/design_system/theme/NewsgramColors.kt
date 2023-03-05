@@ -16,7 +16,7 @@ data class DesignSystem(
     val Primary20: Color = Blue20,
     val Primary30: Color = Blue30,
 
-    val Secondary: Color = Gray00,
+    val Secondary: Color = Green10,
 
     val PrimaryBackground: Color = White,
 

@@ -24,6 +24,20 @@ fun Modifier.bgRounded8Neutral00StrokePrimary00() = composed {
             )
     )
 }
+fun Modifier.bgRounded8Neutral00StrokePrimary20() = composed {
+    this.then(
+        this
+            .clip(RoundedCornerShape(8.dp))
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.NewsgramColors.designSystem.Primary20,
+                shape = RoundedCornerShape(8.dp)
+            )
+            .background(
+                color = MaterialTheme.NewsgramColors.designSystem.Neutral00,
+            )
+    )
+}
 
 fun Modifier.bgRounded8Neutral00StrokeNeutral10() = composed {
     this.then(
@@ -36,6 +50,25 @@ fun Modifier.bgRounded8Neutral00StrokeNeutral10() = composed {
             )
             .background(
                 color = MaterialTheme.NewsgramColors.designSystem.Neutral00,
+            )
+    )
+}
+
+fun Modifier.bgRounded8SecondaryNonStroke() = composed {
+    this.then(
+        this
+            .background(
+                color = MaterialTheme.NewsgramColors.designSystem.Secondary,
+                shape = RoundedCornerShape(8.dp)
+            )
+    )
+}
+fun Modifier.bgRounded8Primary00NonStroke() = composed {
+    this.then(
+        this
+            .background(
+                color = MaterialTheme.NewsgramColors.designSystem.Primary00.copy(alpha = 0.7f),
+                shape = RoundedCornerShape(8.dp)
             )
     )
 }
