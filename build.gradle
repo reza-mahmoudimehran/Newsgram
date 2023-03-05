@@ -5,6 +5,7 @@ buildscript {
         retrofit_version = '2.9.0'
         paging_version = '1.0.0-alpha17'
         lifecycle_version = '2.4.0'
+        accompanist_navigation = '0.29.1-alpha'
     }
     repositories {
         mavenCentral()
