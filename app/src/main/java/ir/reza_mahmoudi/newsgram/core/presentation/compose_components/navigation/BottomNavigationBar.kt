@@ -21,7 +21,7 @@ fun BottomNavigationBar(navController: NavController) {
     )
     BottomNavigation(
         modifier= Modifier.wrapContentHeight(),
-        backgroundColor = MaterialTheme.NewsgramColors.designSystem.Primary40,
+        backgroundColor = MaterialTheme.NewsgramColors.designSystem.BottomSheetBackground,
         contentColor =MaterialTheme.NewsgramColors.designSystem.BottomSheetDefaultIcon
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()

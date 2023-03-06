@@ -19,8 +19,6 @@ data class DesignSystem(
 
     val Secondary: Color = Green10,
 
-    val PrimaryBackground: Color = White,
-
     val Neutral00: Color = Gray00,
     val Neutral10: Color = Gray10,
     val Neutral20: Color = Gray20,
@@ -28,12 +26,16 @@ data class DesignSystem(
     val Neutral40: Color = Gray40,
     val Neutral50: Color = Gray50,
 
+    val PrimaryBackground: Color = White,
+
     val PrimaryText: Color = Gray50,
     val SecondaryText: Color = Lemon,
     val TertiaryText: Color = White,
     val PrimaryLink: Color = Green10,
     val DisabledText: Color = Gray20,
 
+
+    val BottomSheetBackground: Color = Blue40,
     val BottomSheetDefaultIcon: Color = Gray10,
     val BottomSheetSelectedIcon: Color = Green00,
 )
