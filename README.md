@@ -1,6 +1,6 @@
 <div align="center">
 
-<p><img src="https://github.com/reza-mahmoudimehran/Newsgram/main/metadata/images/Newsgram.png" width="200"></p>
+<p><img src="https://github.com/reza-mahmoudimehran/Newsgram/blob/main/metadata/images/Newsgram.png" width="200"></p>
 
 # Newsgram
 
@@ -12,12 +12,13 @@
 </div>
  
 ----
-
-<p float="left">
-  <img src="https://github.com/reza-mahmoudimehran/Newsgram/main/metadata/images/Screenshot_Newsgram_1.jpg" width="23%" />
-  <img src="https://github.com/reza-mahmoudimehran/Newsgram/main/metadata/images/Screenshot_Newsgram_2.jpg" width="23%" />
-  <img src="https://github.com/reza-mahmoudimehran/Newsgram/main/metadata/images/Screenshot_Newsgram_3.jpg" width="23%" />
+<div align="center">
+<p>
+  <img src="https://github.com/reza-mahmoudimehran/Newsgram/blob/main/metadata/images/Screenshot_Newsgram_1.jpg" width="30%" />
+  <img src="https://github.com/reza-mahmoudimehran/Newsgram/blob/main/metadata/images/Screenshot_Newsgram_2.jpg" width="30%" />
+  <img src="https://github.com/reza-mahmoudimehran/Newsgram/blob/main/metadata/images/Screenshot_Newsgram_3.jpg" width="30%" />
 </p>
+</div>
 
 
 ### This is an Android app template that showcases the best practices for building modern Android apps. It uses the following technologies:
@@ -37,6 +38,13 @@ This app template follows the MVVM + Clean Architecture pattern, which separates
 - Presentation layer: responsible for UI and user interactions using Jetpack Compose
 - Domain layer: contains business logic and use cases
 - Data layer: handles data retrieval and storage using Retrofit and Room, respectively
+
+<p align="center">
+  <img src="https://github.com/reza-mahmoudimehran/Newsgram/blob/main/metadata/images/Clean.jpg" height="50%" width="50%" alt="Clean Architecture"/>
+</p>
+<p align="center">
+  <img src="https://github.com/reza-mahmoudimehran/Newsgram/blob/main/metadata/images/Clean_MVVM.png" height="50%" width="50%" alt="Clean + MVVM"/>
+</p>
 
 ## Libraries
 This app template uses the following libraries:
