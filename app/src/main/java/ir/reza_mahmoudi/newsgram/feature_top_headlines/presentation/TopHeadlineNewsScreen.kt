@@ -13,6 +13,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import ir.reza_mahmoudi.newsgram.R
 import ir.reza_mahmoudi.newsgram.core.presentation.app_components.filter.FiltersList
 import ir.reza_mahmoudi.newsgram.core.presentation.app_components.news.NewsItem
+import ir.reza_mahmoudi.newsgram.core.presentation.compose_components.paging_state.PagingLoadingState
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTypography
 import ir.reza_mahmoudi.newsgram.core.util.list.countryItems
@@ -80,6 +81,10 @@ fun TopHeadlineNewsScreen(
                 items(topHeadlineList.itemCount) {
                     NewsItem(article = topHeadlineList[it])
                 }
+            }
+
+            item {
+                PagingLoadingState(pagingItems = topHeadlineList)
             }
         }
     }

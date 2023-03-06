@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import ir.reza_mahmoudi.newsgram.core.presentation.compose_components.navigation.BottomNavigationBar
 import ir.reza_mahmoudi.newsgram.core.presentation.compose_components.navigation.Navigation
-import NewsgramColors
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 
 
 @Composable

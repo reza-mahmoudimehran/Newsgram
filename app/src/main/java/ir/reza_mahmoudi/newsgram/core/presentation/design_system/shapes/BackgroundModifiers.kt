@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import NewsgramColors
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 
 fun Modifier.bgRounded8Neutral00StrokePrimary00() = composed {
     this.then(

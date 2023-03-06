@@ -13,6 +13,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import ir.reza_mahmoudi.newsgram.R
 import ir.reza_mahmoudi.newsgram.core.presentation.app_components.filter.FiltersList
 import ir.reza_mahmoudi.newsgram.core.presentation.app_components.news.NewsItem
+import ir.reza_mahmoudi.newsgram.core.presentation.compose_components.paging_state.PagingLoadingState
 import ir.reza_mahmoudi.newsgram.core.presentation.compose_components.search_box.SearchBox
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramTypography
@@ -85,6 +86,10 @@ fun SearchNewsScreen(
                 items(searchList.itemCount) {
                     NewsItem(article = searchList[it])
                 }
+            }
+
+            item {
+                PagingLoadingState(pagingItems = searchList)
             }
         }
     }

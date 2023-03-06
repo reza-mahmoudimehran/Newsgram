@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ir.reza_mahmoudi.newsgram.R
-import NewsgramColors
+import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {

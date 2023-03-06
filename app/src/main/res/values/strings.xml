@@ -10,4 +10,5 @@
     <string name="language">Language:</string>
     <string name="country">Country:</string>
     <string name="category">Category:</string>
+    <string name="some_thing_went_wrong">Some Thing Went Wrong</string>
 </resources>
