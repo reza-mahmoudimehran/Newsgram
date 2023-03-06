@@ -11,7 +11,7 @@ import ir.reza_mahmoudi.newsgram.R
 
 val mainFont = FontFamily(Font(R.font.avenir_book))
 
-data class NewsgramTypography(
+data class AppTypography(
     val material: Typography,
     val text8: TextStyle = TextStyle(
         fontFamily = mainFont,

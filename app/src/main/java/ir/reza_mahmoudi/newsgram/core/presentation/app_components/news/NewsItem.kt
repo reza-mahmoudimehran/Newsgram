@@ -2,7 +2,6 @@ package ir.reza_mahmoudi.newsgram.core.presentation.app_components.news
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -64,8 +63,8 @@ fun NewsItem(
                 .wrapContentHeight()
                 .padding(8.dp),
             text = article?.title ?: "",
-            color = MaterialTheme.NewsgramColors.designSystem.Neutral30,
-            style = MaterialTheme.NewsgramTypography.text14Bold
+            color = NewsgramColors.designSystem.Neutral30,
+            style = NewsgramTypography.text14Bold
         )
 
 
@@ -80,8 +79,8 @@ fun NewsItem(
                 .wrapContentWidth()
                 .padding(8.dp),
             text = article?.publishedAt?.toLocalTime()  ?: "",
-            color = MaterialTheme.NewsgramColors.designSystem.Neutral30,
-            style = MaterialTheme.NewsgramTypography.text10
+            color = NewsgramColors.designSystem.Neutral30,
+            style = NewsgramTypography.text10
         )
 
 
@@ -96,8 +95,8 @@ fun NewsItem(
                 .wrapContentWidth()
                 .padding(8.dp),
             text = article?.source?.name ?: "",
-            color = MaterialTheme.NewsgramColors.designSystem.Neutral30,
-            style = MaterialTheme.NewsgramTypography.text10
+            color = NewsgramColors.designSystem.Neutral30,
+            style = NewsgramTypography.text10
         )
     }
 }

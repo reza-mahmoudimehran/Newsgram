@@ -5,18 +5,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.*
-import androidx.compose.ui.graphics.Color
 
-private val LightColorPalette = NewsgramColors(
+private val LightColorPalette = AppColors(
     material = lightColorScheme(
         // You can override default colors
     ),
-    designSystem = DesignSystem(
-
-    )
+    designSystem = DesignSystem()
 )
 
-private val DarkColorPalette = NewsgramColors(
+private val DarkColorPalette = AppColors(
     material = darkColorScheme(
         // You can override default colors
     ),
@@ -47,11 +44,11 @@ private val DarkColorPalette = NewsgramColors(
 
         BottomSheetBackground = Gray50,
         BottomSheetDefaultIcon = Gray10,
-        BottomSheetSelectedIcon = Green00,
+        BottomSheetSelectedIcon = Orange10,
     )
 )
 
-private val MainTypography = NewsgramTypography(
+private val MainTypography = AppTypography(
     material = Typography
 )
 
@@ -78,12 +75,12 @@ fun NewsgramTheme(
 
 private val LocalColors = staticCompositionLocalOf { LightColorPalette }
 
-val MaterialTheme.NewsgramColors: NewsgramColors
+val NewsgramColors: AppColors
     @Composable
     @ReadOnlyComposable
     get() = LocalColors.current
 
-val MaterialTheme.NewsgramTypography: NewsgramTypography
+val NewsgramTypography: AppTypography
     @Composable
     @ReadOnlyComposable
     get() = MainTypography

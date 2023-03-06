@@ -6,7 +6,6 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -74,7 +73,7 @@ fun SearchBox(
                 .width(20.dp)
                 .height(20.dp),
             painter = painterResource(id = android.R.drawable.ic_menu_search),
-            tint = MaterialTheme.NewsgramColors.designSystem.Neutral40,
+            tint = NewsgramColors.designSystem.Neutral40,
             contentDescription = "ic_search",
         )
 
@@ -89,14 +88,14 @@ fun SearchBox(
                     text.value = it
             },
             interactionSource = interactionSource,
-            textStyle = MaterialTheme.NewsgramTypography.text14.copy(color = MaterialTheme.NewsgramColors.designSystem.Neutral40),
+            textStyle = NewsgramTypography.text14.copy(color = NewsgramColors.designSystem.Neutral40),
             decorationBox = { innerTextField ->
                 Row(modifier = Modifier.fillMaxWidth()) {
                     if (value.isEmpty()) {
                         Text(
                             text = stringResource(id = ir.reza_mahmoudi.newsgram.R.string.search_text),
-                            color = MaterialTheme.NewsgramColors.designSystem.Neutral20,
-                            style = MaterialTheme.NewsgramTypography.text12,
+                            color = NewsgramColors.designSystem.Neutral20,
+                            style = NewsgramTypography.text12,
                         )
                     }
                 }

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -36,8 +35,8 @@ fun FiltersList(
                     .wrapContentWidth()
                     .padding(8.dp),
                 text = filterText,
-                color = MaterialTheme.NewsgramColors.designSystem.PrimaryText,
-                style = MaterialTheme.NewsgramTypography.text14
+                color = NewsgramColors.designSystem.PrimaryText,
+                style = NewsgramTypography.text14
             )
         }
         filterList.forEach {
@@ -54,11 +53,11 @@ fun FiltersList(
                         .padding(8.dp),
                     text = it.value,
                     color = if (it.key == filterState.value) {
-                        MaterialTheme.NewsgramColors.designSystem.TertiaryText
+                        NewsgramColors.designSystem.TertiaryText
                     } else {
-                        MaterialTheme.NewsgramColors.designSystem.PrimaryText
+                        NewsgramColors.designSystem.PrimaryText
                     },
-                    style = MaterialTheme.NewsgramTypography.text14
+                    style = NewsgramTypography.text14
                 )
             }
         }

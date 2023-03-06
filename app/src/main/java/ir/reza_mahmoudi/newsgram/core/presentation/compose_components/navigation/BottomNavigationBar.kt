@@ -2,7 +2,6 @@ package ir.reza_mahmoudi.newsgram.core.presentation.compose_components.navigatio
 
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.*
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -11,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ir.reza_mahmoudi.newsgram.R
-import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramColors
+import NewsgramColors
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
@@ -21,16 +20,16 @@ fun BottomNavigationBar(navController: NavController) {
     )
     BottomNavigation(
         modifier= Modifier.wrapContentHeight(),
-        backgroundColor = MaterialTheme.NewsgramColors.designSystem.BottomSheetBackground,
-        contentColor =MaterialTheme.NewsgramColors.designSystem.BottomSheetDefaultIcon
+        backgroundColor = NewsgramColors.designSystem.BottomSheetBackground,
+        contentColor = NewsgramColors.designSystem.BottomSheetDefaultIcon
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
                 icon = { Icon(painterResource(id = item.icon), contentDescription = stringResource(id = item.title)) },
-                selectedContentColor = MaterialTheme.NewsgramColors.designSystem.BottomSheetSelectedIcon,
-                unselectedContentColor = MaterialTheme.NewsgramColors.designSystem.BottomSheetDefaultIcon,
+                selectedContentColor = NewsgramColors.designSystem.BottomSheetSelectedIcon,
+                unselectedContentColor = NewsgramColors.designSystem.BottomSheetDefaultIcon,
                 alwaysShowLabel = true,
                 selected = currentRoute == item.screen.route,
                 onClick = {

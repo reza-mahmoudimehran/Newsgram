@@ -1,10 +1,10 @@
 package ir.reza_mahmoudi.newsgram.feature_top_headlines.presentation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -33,42 +33,55 @@ fun TopHeadlineNewsScreen(
         viewModel.getTopHeadlinesNews(country = country.value, category = category.value)
             .collectAsLazyPagingItems()
 
-    LazyColumn(
-        modifier = modifier.background(
-            color = MaterialTheme.NewsgramColors.designSystem.PrimaryBackground,
-        )
-    ) {
-        item {
-            FiltersList(
-                filterText = stringResource(id = R.string.country),
-                filterState = country,
-                filterList = countryList
-            )
-        }
-        item {
-            FiltersList(
-                filterText = stringResource(id = R.string.category),
-                filterState = category,
-                filterList = categoryList
-            )
-        }
 
-        if (topHeadlineList.itemCount > 0) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            modifier = Modifier
+                .padding(5.dp)
+                .wrapContentHeight()
+                .wrapContentWidth()
+                .padding(8.dp),
+            text = stringResource(id = R.string.top_headlines),
+            color = NewsgramColors.designSystem.PrimaryText,
+            style = NewsgramTypography.text18
+        )
+        LazyColumn {
             item {
-                Text(
-                    modifier = Modifier
-                        .padding(10.dp)
-                        .wrapContentHeight()
-                        .wrapContentWidth()
-                        .padding(8.dp),
-                    text = stringResource(id = R.string.top_headlines),
-                    color = MaterialTheme.NewsgramColors.designSystem.Neutral30,
-                    style = MaterialTheme.NewsgramTypography.text14
+                FiltersList(
+                    filterText = stringResource(id = R.string.country),
+                    filterState = country,
+                    filterList = countryList
                 )
             }
-            items(topHeadlineList.itemCount) {
-                NewsItem(article = topHeadlineList[it])
+            item {
+                FiltersList(
+                    filterText = stringResource(id = R.string.category),
+                    filterState = category,
+                    filterList = categoryList
+                )
+            }
+
+            if (topHeadlineList.itemCount > 0) {
+                item {
+                    Text(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .wrapContentHeight()
+                            .wrapContentWidth()
+                            .padding(8.dp),
+                        text = stringResource(id = R.string.top_headlines),
+                        color = NewsgramColors.designSystem.Neutral30,
+                        style = NewsgramTypography.text14
+                    )
+                }
+                items(topHeadlineList.itemCount) {
+                    NewsItem(article = topHeadlineList[it])
+                }
             }
         }
     }
+
 }
