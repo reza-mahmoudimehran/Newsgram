@@ -12,5 +12,5 @@ data class Article(
     @Json(name = "urlToImage")
     val urlToImage: String? = null,
     @Json(name = "source")
-    val source : Source? = null
+    val source: Source? = null
 )

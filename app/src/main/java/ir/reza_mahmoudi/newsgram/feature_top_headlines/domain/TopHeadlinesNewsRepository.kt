@@ -8,5 +8,5 @@ interface TopHeadlinesNewsRepository {
         country: String?,
         category: String?,
         page: Int,
-    ) : Response<NewsListResponse>
+    ): Response<NewsListResponse>
 }

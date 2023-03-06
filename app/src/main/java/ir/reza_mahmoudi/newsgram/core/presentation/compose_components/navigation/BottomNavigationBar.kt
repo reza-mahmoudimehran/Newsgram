@@ -19,7 +19,7 @@ fun BottomNavigationBar(navController: NavController) {
         NavigationItem.SearchNews,
     )
     BottomNavigation(
-        modifier= Modifier.wrapContentHeight(),
+        modifier = Modifier.wrapContentHeight(),
         backgroundColor = NewsgramColors.designSystem.BottomSheetBackground,
         contentColor = NewsgramColors.designSystem.BottomSheetDefaultIcon
     ) {
@@ -27,7 +27,12 @@ fun BottomNavigationBar(navController: NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = stringResource(id = item.title)) },
+                icon = {
+                    Icon(
+                        painterResource(id = item.icon),
+                        contentDescription = stringResource(id = item.title)
+                    )
+                },
                 selectedContentColor = NewsgramColors.designSystem.BottomSheetSelectedIcon,
                 unselectedContentColor = NewsgramColors.designSystem.BottomSheetDefaultIcon,
                 alwaysShowLabel = true,
@@ -60,6 +65,7 @@ sealed class NavigationItem(var screen: Screen, var icon: Int, var title: Int) {
         R.drawable.ic_article,
         R.string.top_headlines
     )
+
     object SearchNews : NavigationItem(
         Screen.SearchNews,
         R.drawable.ic_search,

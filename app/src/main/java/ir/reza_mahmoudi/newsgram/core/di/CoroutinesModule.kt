@@ -10,6 +10,7 @@ import ir.reza_mahmoudi.newsgram.core.di.qualifiers.MainDispatcher
 import ir.reza_mahmoudi.newsgram.core.di.qualifiers.MainImmediateDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+
 @InstallIn(SingletonComponent::class)
 @Module
 object CoroutinesModule {

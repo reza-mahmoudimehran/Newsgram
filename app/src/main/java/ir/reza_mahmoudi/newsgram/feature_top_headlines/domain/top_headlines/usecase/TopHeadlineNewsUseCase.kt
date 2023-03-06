@@ -15,7 +15,11 @@ class TopHeadlineNewsUseCase @Inject constructor(
     ioDispatcher
 ) {
     override suspend fun execute(parameters: Params): Response<NewsListResponse> =
-        topHeadlinesNewsRepository.getTopHeadlinesNews(parameters.country,parameters.category,parameters.page)
+        topHeadlinesNewsRepository.getTopHeadlinesNews(
+            parameters.country,
+            parameters.category,
+            parameters.page
+        )
 
     data class Params(
         val country: String?,

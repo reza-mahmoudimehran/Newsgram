@@ -9,5 +9,5 @@ interface SearchNewsRepository {
         language: String?,
         sortBy: String?,
         page: Int,
-    ) : Response<NewsListResponse>
+    ): Response<NewsListResponse>
 }

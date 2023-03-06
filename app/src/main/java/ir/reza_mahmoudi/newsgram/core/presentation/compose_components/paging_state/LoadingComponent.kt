@@ -16,7 +16,7 @@ import ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme.NewsgramT
 
 @Composable
 fun LoadingComponent(state: PagingState) {
-    when(state){
+    when (state) {
         PagingState.FINISHED -> {}
         PagingState.LOADING -> {
             val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.lottie_loader))
@@ -38,7 +38,7 @@ fun LoadingComponent(state: PagingState) {
             }
         }
         PagingState.ERROR -> {
-            Box(modifier = Modifier.fillMaxWidth()){
+            Box(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     modifier = Modifier
                         .padding(5.dp)

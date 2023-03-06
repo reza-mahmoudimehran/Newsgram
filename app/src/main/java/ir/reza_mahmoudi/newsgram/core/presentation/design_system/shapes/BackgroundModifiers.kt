@@ -23,6 +23,7 @@ fun Modifier.bgRounded8Neutral00StrokePrimary00() = composed {
             )
     )
 }
+
 fun Modifier.bgRounded8Neutral00StrokePrimary20() = composed {
     this.then(
         this
@@ -62,6 +63,7 @@ fun Modifier.bgRounded8SecondaryNonStroke() = composed {
             )
     )
 }
+
 fun Modifier.bgRounded8Primary00NonStroke() = composed {
     this.then(
         this

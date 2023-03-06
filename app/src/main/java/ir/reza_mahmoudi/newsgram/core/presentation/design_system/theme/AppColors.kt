@@ -3,7 +3,6 @@ package ir.reza_mahmoudi.newsgram.core.presentation.design_system.theme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color
 
-
 data class AppColors(
     val material: ColorScheme,
     val designSystem: DesignSystem = DesignSystem(),

@@ -15,7 +15,12 @@ class SearchNewsUseCase @Inject constructor(
     ioDispatcher
 ) {
     override suspend fun execute(parameters: Params): Response<NewsListResponse> =
-        searchNewsRepository.searchNews(parameters.query,parameters.language,parameters.sortBy,parameters.page)
+        searchNewsRepository.searchNews(
+            parameters.query,
+            parameters.language,
+            parameters.sortBy,
+            parameters.page
+        )
 
     data class Params(
         val query: String?,

@@ -57,14 +57,14 @@ fun SearchNewsScreen(
             }
             item {
                 FiltersList(
-                    filterText= stringResource(id = R.string.language),
+                    filterText = stringResource(id = R.string.language),
                     filterState = language,
                     filterList = languageList
                 )
             }
             item {
                 FiltersList(
-                    filterText= stringResource(id = R.string.sort_by),
+                    filterText = stringResource(id = R.string.sort_by),
                     filterState = sortBy,
                     filterList = sortByList
                 )

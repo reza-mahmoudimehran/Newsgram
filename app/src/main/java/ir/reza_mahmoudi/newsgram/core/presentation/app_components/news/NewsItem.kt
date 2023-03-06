@@ -24,7 +24,9 @@ fun NewsItem(
     article: Article?
 ) {
     ConstraintLayout(
-        modifier = modifier.padding(10.dp).fillMaxWidth()
+        modifier = modifier
+            .padding(10.dp)
+            .fillMaxWidth()
     ) {
         val (imgCover, txtTitle, txtPublishDate, txtSource) = createRefs()
 
@@ -78,7 +80,7 @@ fun NewsItem(
                 .wrapContentHeight()
                 .wrapContentWidth()
                 .padding(8.dp),
-            text = article?.publishedAt?.toLocalTime()  ?: "",
+            text = article?.publishedAt?.toLocalTime() ?: "",
             color = NewsgramColors.designSystem.Neutral30,
             style = NewsgramTypography.text10
         )
